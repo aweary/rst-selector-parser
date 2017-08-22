@@ -100,3 +100,24 @@ for (const booleanValue of [true, false]) {
     );
   });
 }
+
+// eslint-disable-next-line no-undefined
+for (const falsyPrimative of [NaN, null, undefined]) {
+  test('valid attribute falsy value: [foo=' + String(falsyPrimative) + ']', (t): void => {
+    const tokens = parse('[foo=' + String(falsyPrimative) + ']');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
+    t.deepEqual(
+      tokens[0].body[0],
+      {
+        name: 'foo',
+        operator: '=',
+        type: 'attributeValueSelector',
+        value: falsyPrimative
+      }
+    );
+  });
+}

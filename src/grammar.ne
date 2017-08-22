@@ -25,6 +25,11 @@
       .concat(d[4]);
   };
 
+  const parsedId = (d, i, reject) => {
+    console.log(d);
+    return d;
+  }
+
   const parseAsNumber = (d, i, reject) => {
     const joined = flattenDeep(d).join('');
     const parsed = parseFloat(joined);
@@ -38,6 +43,13 @@
     if (d[0] === 'true') return true;
     if (d[0] === 'false') return false;
     return reject;
+  }
+
+  const parseFalsyPrimative = (d, i, reject) => {
+    if (d[0] === 'NaN') return NaN;
+    if (d[0] === 'undefined') return undefined;
+    if (d[0] === 'null') return null;
+    return reject
   }
 %}
 
@@ -103,15 +115,21 @@ attributeValueSelector -> "[" attributeName attributeOperator attributeValue "]"
 %}
 
 attributeValue ->
-  floatOrInt {% id %}
+  primativeStrings {% id %}
+  | floatOrInt {% id %}
   | sqstring {% id %}
   | dqstring {% id %}
+
+primativeStrings ->
+   "false" {% parseAsBoolean %}
+  | "true" {% parseAsBoolean %}
+  | "NaN" {% parseFalsyPrimative %}
+  | "null" {% parseFalsyPrimative %}
+  | "undefined" {% parseFalsyPrimative %}
 
 floatOrInt ->
   int "." int {% parseAsNumber %}
   | int {% parseAsNumber %}
-  | "false" {% parseAsBoolean %}
-  | "true" {% parseAsBoolean %}
 
 int -> [0-9]:+
 
