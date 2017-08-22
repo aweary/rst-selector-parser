@@ -80,3 +80,23 @@ for (const invalidAttributeValue of invalidAttributeValues) {
     });
   });
 }
+
+for (const booleanValue of [true, false]) {
+  test('valid attribute boolean value: [foo=' + String(booleanValue) + ']', (t): void => {
+    const tokens = parse('[foo=' + String(booleanValue) + ']');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
+    t.deepEqual(
+      tokens[0].body[0],
+      {
+        name: 'foo',
+        operator: '=',
+        type: 'attributeValueSelector',
+        value: booleanValue
+      }
+    );
+  });
+}
