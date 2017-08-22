@@ -45,7 +45,7 @@
     return reject;
   }
 
-  const parseFalsyPrimative = (d, i, reject) => {
+  const parseFalsyPrimitive = (d, i, reject) => {
     if (d[0] === 'NaN') return NaN;
     if (d[0] === 'undefined') return undefined;
     if (d[0] === 'null') return null;
@@ -115,17 +115,17 @@ attributeValueSelector -> "[" attributeName attributeOperator attributeValue "]"
 %}
 
 attributeValue ->
-  primativeStrings {% id %}
+  falsyPrimitiveStrings {% id %}
   | floatOrInt {% id %}
   | sqstring {% id %}
   | dqstring {% id %}
 
-primativeStrings ->
+falsyPrimitiveStrings ->
    "false" {% parseAsBoolean %}
   | "true" {% parseAsBoolean %}
-  | "NaN" {% parseFalsyPrimative %}
-  | "null" {% parseFalsyPrimative %}
-  | "undefined" {% parseFalsyPrimative %}
+  | "NaN" {% parseFalsyPrimitive %}
+  | "null" {% parseFalsyPrimitive %}
+  | "undefined" {% parseFalsyPrimitive %}
 
 floatOrInt ->
   int "." int {% parseAsNumber %}

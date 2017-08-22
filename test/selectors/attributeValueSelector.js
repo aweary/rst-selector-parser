@@ -102,9 +102,9 @@ for (const booleanValue of [true, false]) {
 }
 
 // eslint-disable-next-line no-undefined
-for (const falsyPrimative of [NaN, null, undefined]) {
-  test('valid attribute falsy value: [foo=' + String(falsyPrimative) + ']', (t): void => {
-    const tokens = parse('[foo=' + String(falsyPrimative) + ']');
+for (const falsyPrimitive of [NaN, null, undefined]) {
+  test('valid attribute falsy value: [foo=' + String(falsyPrimitive) + ']', (t): void => {
+    const tokens = parse('[foo=' + String(falsyPrimitive) + ']');
 
     if (tokens[0].type !== 'selector') {
       throw new Error('Unexpected state.');
@@ -116,7 +116,7 @@ for (const falsyPrimative of [NaN, null, undefined]) {
         name: 'foo',
         operator: '=',
         type: 'attributeValueSelector',
-        value: falsyPrimative
+        value: falsyPrimitive
       }
     );
   });
