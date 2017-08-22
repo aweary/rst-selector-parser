@@ -33,6 +33,12 @@
     }
     return parsed
   }
+
+  const parseAsBoolean = (d, i, reject) => {
+    if (d[0] === 'true') return true;
+    if (d[0] === 'false') return false;
+    return reject;
+  }
 %}
 
 combinator ->
@@ -104,6 +110,8 @@ attributeValue ->
 floatOrInt ->
   int "." int {% parseAsNumber %}
   | int {% parseAsNumber %}
+  | "false" {% parseAsBoolean %}
+  | "true" {% parseAsBoolean %}
 
 int -> [0-9]:+
 
