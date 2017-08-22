@@ -121,3 +121,23 @@ for (const falsyPrimitive of [NaN, null, undefined]) {
     );
   });
 }
+
+for (const numericValue of [NaN, 123, -234, -3.323, 3.343, '+3', '+4.0', Infinity, '+Infinity', -Infinity]) {
+  test('valid attribute numeric value: [foo=' + String(numericValue) + ']', (t): void => {
+    const tokens = parse('[foo=' + String(numericValue) + ']');
+
+    if (tokens[0].type !== 'selector') {
+      throw new Error('Unexpected state.');
+    }
+
+    t.deepEqual(
+      tokens[0].body[0],
+      {
+        name: 'foo',
+        operator: '=',
+        type: 'attributeValueSelector',
+        value: parseFloat(numericValue)
+      }
+    );
+  });
+}
