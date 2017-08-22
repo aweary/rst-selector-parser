@@ -25,11 +25,6 @@
       .concat(d[4]);
   };
 
-  const parsedId = (d, i, reject) => {
-    console.log(d);
-    return d;
-  }
-
   const parseAsNumber = (d, i, reject) => {
     const joined = flattenDeep(d).join('');
     const parsed = parseFloat(joined);
