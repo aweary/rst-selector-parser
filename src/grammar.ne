@@ -39,6 +39,13 @@
     if (d[0] === 'false') return false;
     return reject;
   }
+
+  const parseFalsyPrimitive = (d, i, reject) => {
+    if (d[0] === 'NaN') return NaN;
+    if (d[0] === 'undefined') return undefined;
+    if (d[0] === 'null') return null;
+    return reject
+  }
 %}
 
 combinator ->
@@ -103,15 +110,21 @@ attributeValueSelector -> "[" attributeName attributeOperator attributeValue "]"
 %}
 
 attributeValue ->
-  floatOrInt {% id %}
+  falsyPrimitiveStrings {% id %}
+  | floatOrInt {% id %}
   | sqstring {% id %}
   | dqstring {% id %}
+
+falsyPrimitiveStrings ->
+   "false" {% parseAsBoolean %}
+  | "true" {% parseAsBoolean %}
+  | "NaN" {% parseFalsyPrimitive %}
+  | "null" {% parseFalsyPrimitive %}
+  | "undefined" {% parseFalsyPrimitive %}
 
 floatOrInt ->
   int "." int {% parseAsNumber %}
   | int {% parseAsNumber %}
-  | "false" {% parseAsBoolean %}
-  | "true" {% parseAsBoolean %}
 
 int -> [0-9]:+
 
