@@ -111,7 +111,7 @@ attributeValueSelector -> "[" attributeName attributeOperator attributeValue "]"
 
 attributeValue ->
   falsyPrimitiveStrings {% id %}
-  | floatOrInt {% id %}
+  | numericValue {% id %}
   | sqstring {% id %}
   | dqstring {% id %}
 
@@ -122,9 +122,25 @@ falsyPrimitiveStrings ->
   | "null" {% parseFalsyPrimitive %}
   | "undefined" {% parseFalsyPrimitive %}
 
-floatOrInt ->
+numericValue ->
+  # implicit positive floats
   int "." int {% parseAsNumber %}
+  # explicit positive floats
+  | "+" int "." int {% parseAsNumber %}
+  # negative floats
+  | "-" int "." int {% parseAsNumber %}
+  # negative ints
+  | "-" int {% parseAsNumber %}
+  # implicit positive ints
   | int {% parseAsNumber %}
+  # explicit positive ints
+  | "+" int {% parseAsNumber %}
+  # implicit positive Infinity
+  | "Infinity" {% parseAsNumber %}
+  # explicit positive Infinity
+  | "+Infinity" {% parseAsNumber %}
+  # negative Infinity
+  | "-Infinity" {% parseAsNumber %}
 
 int -> [0-9]:+
 
