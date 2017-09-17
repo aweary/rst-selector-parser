@@ -11,7 +11,9 @@ const validNodeNames = [
   'FOO',
   'foo-bar',
   '_0',
-  'foo-123'
+  'foo-123',
+  'foo(bar)',
+  'foo(bar(baz(qux)))'
 ];
 
 for (const validNodeName of validNodeNames) {

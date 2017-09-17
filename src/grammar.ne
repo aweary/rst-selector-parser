@@ -71,7 +71,7 @@ typeSelector -> attributeName {% d => ({type: 'typeSelector', name: d[0]}) %}
 # see http://stackoverflow.com/a/449000/368691
 className -> "-":? [_a-zA-Z] [_a-zA-Z0-9-]:* {% d => (d[0] || '') + d[1] + d[2].join('') %}
 
-attributeName -> [_a-zA-Z] [_a-zA-Z0-9-]:* {% d => d[0] + d[1].join('') %}
+attributeName -> [_a-z()A-Z] [_a-zA-Z()0-9-]:* {% d => d[0] + d[1].join('') %}
 
 classSelector -> "." className {% d => ({type: 'classSelector', name: d[1]}) %}
 
