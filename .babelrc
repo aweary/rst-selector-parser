@@ -2,11 +2,5 @@
   "plugins": [
     "transform-flow-comments"
   ],
-  "presets": [
-    ["env", {
-      "targets": {
-        "node": 5
-      }
-    }]
-  ]
+  "presets": ["env"]
 }
