@@ -29,9 +29,6 @@
     "semantic-release": "^6.3.2",
     "webpack": "^2.2.0"
   },
-  "engines": {
-    "node": ">=5"
-  },
   "keywords": [
     "css",
     "selector",
