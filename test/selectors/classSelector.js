@@ -9,6 +9,7 @@ const validClassNames = [
   'foo',
   'FOO',
   '-foo',
+  '--foo',
   '-_foo',
   '_0',
   'foo-0'

@@ -9,7 +9,9 @@ const validIdNames = [
   'foo',
   'FOO',
   '_0',
-  'foo-0'
+  'foo-0',
+  '-foo',
+  '--foo'
 ];
 
 for (const validIdName of validIdNames) {
@@ -31,7 +33,6 @@ for (const validIdName of validIdNames) {
 }
 
 const invalidIdNames = [
-  '-foo',
   '123'
 ];
 
