@@ -13,7 +13,8 @@ const validNodeNames = [
   '_0',
   'foo-123',
   'foo(bar)',
-  'foo(bar(baz(qux)))'
+  'foo(bar(baz(qux)))',
+  '-foo'
 ];
 
 for (const validNodeName of validNodeNames) {
@@ -35,7 +36,6 @@ for (const validNodeName of validNodeNames) {
 }
 
 const invalidNodeNames = [
-  '-foo',
   '123'
 ];
 

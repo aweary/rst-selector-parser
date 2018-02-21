@@ -110,6 +110,10 @@ const validSelectors = {
     'qux0',
     'qux1'
   ],
+  'foo#--bar': [
+    'foo',
+    '--bar'
+  ],
   'foo#bar': [
     'foo',
     'bar'
@@ -146,6 +150,10 @@ const validSelectors = {
     'qux',
     'corge',
     'grault'
+  ],
+  'foo.--bar': [
+    'foo',
+    '--bar'
   ],
   'foo.baz': [
     'foo',
