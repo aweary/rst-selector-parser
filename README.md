@@ -171,7 +171,7 @@ npm install
 npm run test
 ```
 
-The parser grammar is in the [`./src/grammar.ne`](./src/grammar.ne) file. After making changes to the parser grammar, you need to compile the parser using `npm run compile-grammar` command.
+The parser grammar is in the [`./src/grammar.js`](./src/grammar.js) file.
 
 > Note:
 >
@@ -346,7 +346,7 @@ npm install
 npm run test
 ```
 
-The parser grammar is in the [`./src/grammar.ne`](./src/grammar.ne) file. After making changes to the parser grammar, you need to compile the parser using `npm run compile-grammar` command.
+The parser grammar is in the [`./src/grammar.js`](./src/grammar.js) file.
 
 > Note:
 >
@@ -521,4 +521,4 @@ npm install
 npm run test
 ```
 
-The parser grammar is in the [`./src/grammar.ne`](./src/grammar.ne) file. After making changes to the parser grammar, you need to compile the parser using `npm run compile-grammar` command.
+The parser grammar is in the [`./src/grammar.js`](./src/grammar.js) file.
