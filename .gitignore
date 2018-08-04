@@ -2,7 +2,6 @@ coverage
 demo
 dist
 node_modules
-src/grammar.js
 *.log
 .*
 !.babelrc

@@ -11,8 +11,7 @@
     ]
   },
   "dependencies": {
-    "lodash.flattendeep": "^4.4.0",
-    "nearley": "^2.7.10"
+    "parsimmon": "^1.12.0"
   },
   "description": "A CSS-based selector parser for React Standard Tree (RST) traversal",
   "devDependencies": {
@@ -42,8 +41,7 @@
     "url": "https://github.com/aweary/rst-selector-parser"
   },
   "scripts": {
-    "build": "npm run compile-grammar && babel ./src --out-dir ./dist --copy-files --source-maps",
-    "compile-grammar": "nearleyc ./src/grammar.ne --out ./src/grammar.js",
+    "build": "babel ./src --out-dir ./dist --copy-files --source-maps",
     "lint": "eslint ./src ./test && flow",
     "precommit": "npm run lint && npm run test",
     "test": "ava --verbose"
