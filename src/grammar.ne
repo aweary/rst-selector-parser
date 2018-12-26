@@ -72,10 +72,16 @@ simpleSelector ->
 
 typeSelector -> attributeName {% d => ({type: 'typeSelector', name: d[0]}) %}
 
+# special characters used in css syntax, see https://mathiasbynens.be/notes/css-escapes
+# for these special characters we must add "\\" to escape it in class selector, or `document.querySelector` will throw
+specialChar -> "\\" | "!" | "#" | "$" | "%" | "&" | "'" | "(" | ")" | "[" | "]" | "*" | "+" | "," | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "^" | "`" | "{" | "|" | "}" | "~"
 
+# see https://drafts.csswg.org/css-syntax-3/#escaping
+# now we only support special char escaping, not handling all unicode point and hex digit escape sequence
+escape -> "\\" specialChar
 
 # see http://stackoverflow.com/a/449000/368691
-className -> [-]:* [_a-zA-Z] [_a-zA-Z0-9-]:* {% flatJoin %}
+className -> [-]:* ([_a-zA-Z] | escape) ([_a-zA-Z0-9-] | escape):* {% flatJoin %}
 
 attributeName -> [-]:* [_a-z()A-Z] [_a-zA-Z()0-9-]:* {% flatJoin %}
 
