@@ -24,7 +24,10 @@ const validClassNames = [
   '\\[',
   '\\]',
   '\\>',
-  '\\+'
+  '\\+',
+  '±',
+  '\\±',
+  'foo_±\\@'
 ];
 
 for (const validClassName of validClassNames) {
