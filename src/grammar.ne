@@ -1,5 +1,5 @@
 @{%
-  const flattenDeep = require('lodash.flattendeep');
+  const flattenDeep = require('lodash/flattendeep');
   const appendItem = (a, b) => d => d[a].concat([d[b]]);
   const appendItemChar = (a, b) => d => d[a].concat(d[b]);
 
