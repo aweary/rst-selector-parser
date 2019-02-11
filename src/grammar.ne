@@ -1,7 +1,10 @@
 @{%
-  const flattenDeep = require('lodash/flattendeep');
   const appendItem = (a, b) => d => d[a].concat([d[b]]);
   const appendItemChar = (a, b) => d => d[a].concat(d[b]);
+
+  const flattenDeep = arr => {
+    return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+  }
 
   const flatten = d => {
     d = d.filter((r) => { return r !== null; });
