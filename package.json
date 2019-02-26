@@ -11,7 +11,7 @@
     ]
   },
   "dependencies": {
-    "lodash.flattendeep": "^4.4.0",
+    "array.prototype.flat": "^1.2.1",
     "nearley": "^2.7.10"
   },
   "description": "A CSS-based selector parser for React Standard Tree (RST) traversal",

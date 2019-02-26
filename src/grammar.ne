@@ -1,11 +1,11 @@
 @{%
-  const flattenDeep = require('lodash.flattendeep');
+  const flat = require('array.prototype.flat');
   const appendItem = (a, b) => d => d[a].concat([d[b]]);
   const appendItemChar = (a, b) => d => d[a].concat(d[b]);
 
   const flatten = d => {
     d = d.filter((r) => { return r !== null; });
-    return flattenDeep(d);
+    return flat(d, 'Infinity');
   };
 
   const flatJoin = d => {
@@ -30,7 +30,7 @@
   };
 
   const parseAsNumber = (d, i, reject) => {
-    const joined = flattenDeep(d).join('');
+    const joined = flat(d, 'Infinity').join('');
     const parsed = parseFloat(joined);
     if (isNaN(parsed)) {
       return reject
