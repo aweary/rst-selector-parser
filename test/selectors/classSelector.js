@@ -12,7 +12,22 @@ const validClassNames = [
   '--foo',
   '-_foo',
   '_0',
-  'foo-0'
+  'foo-0',
+  '\\@',
+  'foo\\@0',
+  '-\\#a',
+  '\\\\',
+  '\\.',
+  '\\^',
+  '\\&',
+  '\\?',
+  '\\[',
+  '\\]',
+  '\\>',
+  '\\+',
+  '±',
+  '\\±',
+  'foo_±\\@'
 ];
 
 for (const validClassName of validClassNames) {
@@ -36,7 +51,8 @@ for (const validClassName of validClassNames) {
 const invalidClassNames = [
   '0',
   '-0',
-  '*'
+  '*',
+  'foo@0'
 ];
 
 for (const invalidClassName of invalidClassNames) {

@@ -72,10 +72,21 @@ simpleSelector ->
 
 typeSelector -> attributeName {% d => ({type: 'typeSelector', name: d[0]}) %}
 
+# special characters used in css syntax, see https://mathiasbynens.be/notes/css-escapes
+# for these special characters we must add "\\" to escape it in class selector, or `document.querySelector` will throw
+specialChar -> "\\" | "!" | "#" | "$" | "%" | "&" | "'" | "(" | ")" | "[" | "]" | "*" | "+" | "," | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "^" | "`" | "{" | "|" | "}" | "~"
+# nonSpecialChar cannot repeated with [_a-zA-Z0-9-] or will get ambiguous when parsing className
+# write special char in unicode form so we don't need to handle escape in charset
+nonSpecialChar -> [^_a-zA-Z0-9-\u0021-\u002f\u003a-\u0040\u005b-\u005e\u0060\u007b-\u007e]
 
+# see https://drafts.csswg.org/css-syntax-3/#escaping
+escape ->
+  "\\" specialChar |
+  # for non special unicode code point, the prefix backslash is optional
+  "\\":* nonSpecialChar
 
 # see http://stackoverflow.com/a/449000/368691
-className -> [-]:* [_a-zA-Z] [_a-zA-Z0-9-]:* {% flatJoin %}
+className -> [-]:* ([_a-zA-Z] | escape) ([_a-zA-Z0-9-] | escape):* {% flatJoin %}
 
 attributeName -> [-]:* [_a-z()A-Z] [_a-zA-Z()0-9-]:* {% flatJoin %}
 
