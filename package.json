@@ -18,7 +18,7 @@
   "devDependencies": {
     "ava": "^0.17.0",
     "babel-cli": "^6.22.2",
-    "babel-loader": "^6.2.10",
+    "babel-loader": "^9.1.0",
     "babel-plugin-transform-flow-comments": "^6.22.0",
     "babel-preset-env": "^1.1.8",
     "babel-register": "^6.22.0",
@@ -27,7 +27,7 @@
     "flow-bin": "^0.38.0",
     "husky": "^0.13.0-1",
     "semantic-release": "^6.3.2",
-    "webpack": "^2.2.0"
+    "webpack": "^5.74.0"
   },
   "keywords": [
     "css",
