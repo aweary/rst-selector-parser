@@ -16,7 +16,7 @@
   },
   "description": "A CSS-based selector parser for React Standard Tree (RST) traversal",
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "^5.1.0",
     "babel-cli": "^6.22.2",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-flow-comments": "^6.22.0",
